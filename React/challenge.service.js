@@ -1,3 +1,9 @@
+import Notifier from "../helpers/notifier.js";
+import axiosInstance from "../config/axios.config";
+import queryString from "query-string";
+
+const baseUrl = "https://localhost:8080/api/challenges";
+
 export function getByTiers(tiers) {
   let queryString = "";
   function arrayToQuery(element, index) {
@@ -14,3 +20,11 @@ export function getByTiers(tiers) {
     .then(responseSuccessHandler)
     .catch(responseErrorHandler);
 }
+
+const responseSuccessHandler = response => {
+  return response.data;
+};
+
+const responseErrorHandler = error => {
+  return Promise.reject(error);
+};
